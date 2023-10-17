@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <input type="file" id="fileInput">
+    <div id="viewer" style="width:1024px; height:600px; margin:0 auto;"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const viewerElement = document.getElementById('viewer');
+        const fileInput = document.getElementById('fileInput');
+
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            const filePath = URL.createObjectURL(file);
+
+            WebViewer({
+                path: '/lib/webViewer',
+                initialDoc: filePath,
+            }, viewerElement).then(instance => {
+
+
+            });
+        });
+    })
+</script>
